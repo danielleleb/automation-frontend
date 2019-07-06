@@ -1,33 +1,114 @@
-.App {
+.table > .row {
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  /* justify-content: space-evenly; */
+  /* text-align: center; */
+  border: 2px solid #5741d9;
+  /* background-color: rgb(236, 236, 236); */
+  color: rgb(102, 102, 102);
+  font-weight: 600;
+  transition: 2s op ease;
+}
+
+.table span {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 10px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.table {
+  max-height: 200px;
+  max-width: 500px;
+  overflow-y: scroll;
+  border: 4px solid #5741d9;
+  border-radius: 5px;
+  overflow: -moz-scrollbars-vertical; 
+  box-shadow: 2 2 2 2 black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.table > .row.label {
+  background-color: #5741d9;
+  color: rgb(236, 236, 236);
+  font-weight: 700;
+}
+
+.table > .row > span:nth-child(2) {
+  border-right: 1px solid #5741d9;
+  border-left: 1px solid #5741d9;
+}
+
+.graph {
+  width: 700px;
+  z-index: 1;
+  background-color: white;
+  border-radius: 5px;
+}
+
+header {
+  background-color: #5741d9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 30vh;
+  color: rgb(236, 236, 236);
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.pair-selection {
+  margin: -60px auto 0;
+  width: min-content;
+  /* border: 2px solid rgb(236, 236, 236); */
+  padding: 0px 10px 5px;
+  font-size: 20px;
+  text-align: center;
+  /* background-color: rgb(236, 236, 236); */
+  background-color: #5741d9;
+  border-radius: 5px;
+}
+
+.data-components-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 40px;
+  flex-wrap: wrap;
+}
+
+.initial-message {
+  border: 20px solid #5741d9;
+  margin: 100px auto;
+  /* min-width: 50vw; */
+  width: 50vw;
+  max-width: 100vw;
+  /* margin: 0 auto; */
+  text-align: center;
+  padding: 30px 40px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+
+@media screen and (max-width: 767px) {
+  .graph {
+    width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .graph > canvas {
+    margin: 0 auto;
+  }
+
+  .data-components-container {
+    padding-right: 0;
+  }
+
+  .table .row {
+    font-size: 12px;
+  }
+
+  .table {
+    margin: 30px auto;
   }
 }
