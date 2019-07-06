@@ -22,8 +22,9 @@ function PairSelection(props) {
     <div className="pair-selection">
       <select
         onChange={(e) => handlePairClick(e.target.value)}
+        defaultValue="Choose a pair"
       >
-        <option placeholder="choose a pair" value="Choose a pair" disabled selected>Choose a pair</option>
+        <option placeholder="Choose a pair" value="Choose a pair" disabled>Choose a pair</option>
         {pairList}
       </select>
     </div>
