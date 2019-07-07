@@ -1,20 +1,16 @@
-import React, {Component, Fragment} from 'react';
-import './App.css';
+import React, {Component} from 'react';
+import '../App.css';
 import {connect} from 'react-redux';
-import { fetchList, setSelectedPair, getSelectedPairInfo } from './actions/index.js';
+import { fetchList, setSelectedPair, getSelectedPairInfo } from '../actions/index.js';
 import {bindActionCreators} from 'redux';
-import PairSelection from './components/PairSelection';
-import DataComponents from './components/DataComponents';
-import Table from './components/Table';
-import { throwStatement } from '@babel/types';
+import PairSelection from './PairSelection';
+import Table from './Table';
 import {Line} from 'react-chartjs-2';
 
 class App extends Component {
 
   componentWillMount() {
     this.props.fetchList();
-
-    console.log(this.props.list);
   }
 
   render() {
@@ -54,7 +50,7 @@ class App extends Component {
     }
     console.log(this.props.selectedPair, this.props.selectedPairInfo)
     if (!this.props.list.length) {
-      return(<div>LOADING...</div>)
+      return(<div className="loading-screen">LOADING...</div>)
     }
     
     return (
@@ -72,7 +68,7 @@ class App extends Component {
         />
 
         {
-          !this.props.selectedPair.length ||
+          !this.props.selectedPair ||
           !this.props.selectedPairInfo.length ? (
             <div className="initial-message" >
               Choose a pair from the menu above to get started
@@ -104,8 +100,8 @@ class App extends Component {
 function mapPropsToState(state) {
   return {
      list: state.list,
-     selectedPair: state.selectedPair[0].selectedPair,
-     selectedPairInfo: state.selectedPair[0].selectedPairInfo
+     selectedPair: state.selectedPair.selectedPair,
+     selectedPairInfo: state.selectedPair.selectedPairInfo
   }
 }
 

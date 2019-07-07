@@ -3,7 +3,6 @@ import React from 'react';
 function Table(props) {
 
   setTimeout(() => {
-    console.log(props.selectedPair)
     props.getSelectedPairInfo(props.selectedPair);
   }, 10000)
 
