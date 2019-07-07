@@ -48,7 +48,6 @@ class App extends Component {
         ]
       }
     }
-    console.log(this.props.selectedPair, this.props.selectedPairInfo)
     if (!this.props.list.length) {
       return(<div className="loading-screen">LOADING...</div>)
     }
