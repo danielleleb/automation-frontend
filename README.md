@@ -21,7 +21,9 @@ The application is currently updating the current value of the pair every minute
  - Use Typescript (or Flow)
  - Implement redux-logic
  - Implement better loading page for when a new pair is selected
-  - Use a nicer dropdown menu 
+ - Use a nicer dropdown menu 
+ - **Develop tests
+
 ### Instructions to run the application:
 The application has been deployed and can be found here: https://shielded-stream-86773.herokuapp.com/ (it's hosted on Heroku's free tier, so it will take some extra time to "wake up" the application on first load, but will load normally after the first load). 
 
