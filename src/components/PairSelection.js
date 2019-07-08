@@ -8,6 +8,9 @@ function PairSelection(props) {
   }
 
   const pairList = Object.keys(props.list).map((item, index) => {
+    if (item.includes('.')) {
+      return;
+    }
     return (
       <option 
       key={index}

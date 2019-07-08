@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CS Automation Code Challenge
 
-## Available Scripts
+### BACKEND
+To create this application, I began by reading the documentation of the Kraken API. After reading the documentation and the description of the challenge, I used Postman to make calls to the API - this, along with the documentation, allowed me to gain more understanding of the data provided.
 
-In the project directory, you can run:
+To create the backend for my application, I created a server with Express.js and used Helmet.js for extra security protections. Additionally, I also the express-rate-limit package to limit the allowed number of calls to the server (todo: Implement an error message for users when the limit has been exceeded - it currently displays the loading page). 
 
-### `npm start`
+In addition to using Helmet.js, I also chose to make all calls to the Kraken API (as well as to the Express server) using POST methods, rather than GET. I chose to do this to prevent potentially valuable information from being displayed in the URL. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+While I used the Kraken rest API to complete this challenge, I think using Web Sockets would have been more performant, specifically regarding the numerous calls to the ‘Ticker’ API. Due to the fact that I only had six hours to complete the challenge, I chose to use the rest API, as am I more comfortable, and have more experience, with that format, so I thought this would allow me to make better use of my limited time. 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### FRONTEND
+Regarding the frontend, I chose to use Redux for managing the state. I debated whether or not Redux was truly necessary for this app, as the components aren’t too deeply nested. Similarly as what I previously said about Web Sockets vs the rest API, I think using the React Context API would have been a preferable option for this application. Though as I have more experience, and am more comfortable, with Redux, I chose to use it instead due to time constraints. 
 
-### `npm test`
+One thing I would like to improve within this application is the accuracy of the timing of each ticker API call. I’m currently using setTimeout to dispatch the call to the ticker API. To improve the accuracy, I would like to utilize the ‘Get server time’ endpoint.  
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application is currently updating the current value of the pair every minute, had I had more time, I would have implemented options that would allow the user to choose the frequency of calls to the ticker endpoint.
 
-### `npm run build`
+#### Additional todos/improvements:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ - Use Typescript (or Flow)
+ - Implement redux-logic
+ - Implement better loading page for when a new pair is selected
+  - Use a nicer dropdown menu 
+### Instructions to run the application:
+The application has been deployed and can be found here: https://shielded-stream-86773.herokuapp.com/ (it's hosted on Heroku's free tier, so it will take some extra time to "wake up" the application on first load, but will load normally after the first load). 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### To install the project locally:
+- Clone this (frontend) repository and run `npm install`
+- Clone the server repository (https://github.com/danielleleb/automation-backend) and run `npm install`
+- In the frontend repository, line 19 of `package.json` should be changed to `"start": "PORT=4200 react-scripts start",` (todo: create a script to automate this to improve experience for other developers)
+- Run the frontend repository using `npm run start`
+- Run the backend repository using `npm run start`
+- The site should now be visible at `localhost:4200`
